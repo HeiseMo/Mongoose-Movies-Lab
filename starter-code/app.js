@@ -8,6 +8,7 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const router = require('router');
 
 
 mongoose
@@ -54,5 +55,9 @@ app.locals.title = 'Express - Generated with IronGenerator';
 const index = require('./routes/index');
 app.use('/', index);
 
+const celebrities = require('./routes/celebrities');
+app.use('/', celebrities);
 
 module.exports = app;
+
+app.listen(3000, () => console.log('This project is running on port 3000 '));
