@@ -34,5 +34,15 @@ router.get('/celebrities/:id', (req, res, next) => {
   });
 });
 
+router.get('/celebrities/:id/delete', (req, res, next) => {
+  Celeb.findByIdAndRemove(req.params.id)
+  .then(oneCeleb => {
+    res.redirect('/celebrities');
+  })
+  .catch(error => {
+    console.log(error);
+  });
+});
+
 
 module.exports = router;
