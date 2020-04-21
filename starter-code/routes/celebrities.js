@@ -44,5 +44,25 @@ router.get('/celebrities/:id/delete', (req, res, next) => {
   });
 });
 
+router.get('/celebrities/:id/edit', (req, res, next) => {
+  Celeb.findById(req.params.id)
+  .then(oneCeleb => {
+    res.render('celebrities/edit', {celeb: oneCeleb});
+  })
+  .catch(error => {
+    console.log(error);
+  });
+});
+
+router.post('/celebrities/:id/edit', (req, res, next) => {
+  let {name, occupation, catchPhrase} = req.body;
+  Celeb.update({ _id: req.params.id}, { $set: { name, occupation, catchPhrase } })
+  .then(() => {
+  res.redirect('/celebrities');
+  })
+  .catch((error) => {
+  console.log(error);
+  });
+});
 
 module.exports = router;

@@ -1,7 +1,8 @@
 <h2>Celebrities</h2>
 {{#each celebList}}
 <p>{{name}}</p>
-<a href="/celebrities/{{_id}}">Click to find out more about {{name}}!</a>
+<a href="/celebrities/{{_id}}">Find out more about {{name}}!</a><br>
+<a href="/celebrities/{{_id}}/edit">Edit {{name}}</a>
 {{/each}}
 
 <p><a href="/celebrities/new">Add a new Celebrity</a></p>
